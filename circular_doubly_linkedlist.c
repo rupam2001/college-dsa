@@ -21,8 +21,7 @@ struct node *createNewNode(int data)
 
     if (!newNode)
     {
-        printf("Memory error: Unable to allocate memeory\n");
-        exit(-1);
+        Error("Memory error\n")
     }
     newNode->data = data;
     newNode->prev = NULL;
@@ -65,7 +64,7 @@ struct node *insertEnd(struct node *head, int data)
         return head;
     }
 
-    head->prev->next = newNode; //lastnode->next = newNode
+    head->prev->next = newNode;
     newNode->prev = head->prev;
     newNode->next = head;
     head->prev = newNode;
@@ -168,7 +167,10 @@ struct node *delete (struct node *head, int pos)
     // printf("pos %d", iterator->data);
 
     if (iterator->next == head)
+    {
+
         return deleteEnd(head);
+    }
 
     iterator->prev->next = iterator->next;
     iterator->next->prev = iterator->prev;
@@ -176,7 +178,42 @@ struct node *delete (struct node *head, int pos)
 
     return head;
 }
+struct node *deleteByValue(struct node *head, int value)
+{
 
+    if (head == NULL)
+    {
+        Error("Trying to delete from an empty list\n")
+    }
+
+    // if (head->next == head)
+    // {
+    //     return deleteBeg(head);
+    // }
+
+    struct node *iterator = head;
+    // int counter = 0;
+
+    while (iterator->data != value && iterator->next != head)
+    {
+        iterator = iterator->next;
+        // counter++;
+    }
+    if (iterator->data != value)
+    {
+        Error("Invalid pos\n")
+    }
+    // printf("pos %d", iterator->data);
+
+    // if (iterator->next == head)
+    //     return deleteEnd(head);
+
+    iterator->prev->next = iterator->next;
+    iterator->next->prev = iterator->prev;
+    free(iterator);
+
+    return head;
+}
 void traverse(struct node *head, void (*callback)(struct node *), int rev)
 {
 
@@ -230,6 +267,7 @@ int main()
     cdll = insertEnd(cdll, 8);
     cdll = insertEnd(cdll, 9);
     cdll = insert(cdll, 99, 2);
+    cdll = deleteByValue(cdll, 9);
     // insertBeg(&cdll, 2);
     // insertBeg(&cdll, 3);
     // insertBeg(&cdll, 4);

@@ -12,7 +12,7 @@ void insertionSort(int *arr, int size)
             j--;
         }
         arr[j + 1] = key;
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < 10; i++)
             printf("%d ", arr[i]);
         printf("\n");
     }
@@ -20,8 +20,8 @@ void insertionSort(int *arr, int size)
 
 int main()
 {
-    int arr[9] = {57, 48, 33, 12, 78, 90, 25, 67, 4};
-    insertionSort(arr, 9);
+    int arr[10] = {67, 92, 48, 79, 5, 23, 81, 98, 3, 2};
+    insertionSort(arr, 10);
 
     // for (int i = 0; i < 5; i++)
     //     printf("%d ", arr[i]);
