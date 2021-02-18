@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef struct node
 {
@@ -84,9 +85,56 @@ void display(node *adj, int num)
 
 int main()
 {
-    node *graph = create_graph(5);
-    graph = input(graph, 5);
-    display(graph, 5);
+
+    int size = 5;
+
+    node *graph = create_graph(size); //the graph is array of strutures
+    graph = input(graph, size);
+    display(graph, size);
+
+    // BFS(graph, size, 0);
 
     return 0;
 }
+
+// int **getAdjList(node *graph, int size)
+// {
+
+//     int **adj = (int **)malloc(num * sizeof(int *));
+//     for (int i = 0; i < size; i++)
+//     {
+//         memset(adj[i], 0, sizeof(int));
+//     }
+
+//     for (int i = 0; i < size; i++)
+//     {
+//         node *itr = graph[i];
+
+//         while (itr)
+//         {
+
+//             int v = itr->vertext;
+//             for (int j = 0; j < size; j++)
+//             {
+//                 if (v == graph[j].vertext)
+//                 {
+//                     adj[i][j] = 1;
+//                 }
+//             }
+//             itr = itr->next;
+//         }
+//     }
+//     return adj;
+// }
+
+// void display(int size, int adj[][size])
+// {
+//     for (int i = 0; i < size; i++)
+//     {
+//         for (int j = 0; j < size; j++)
+//         {
+//             printf("%d ", adj[i][j]);
+//         }
+//         printf("\n");
+//     }
+// }

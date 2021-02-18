@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 #define SIZE 5
 
@@ -45,8 +46,40 @@ void BFS(const int size, char *vertexs, int adj[][size], int start)
     }
 }
 
+typedef struct graph
+{
+    int *vertexs;
+    int size;
+    int **adj;
+} graph;
+
+graph *create_graph(int size)
+{
+    graph *g = (graph *)malloc(sizeof(graph));
+    g->vertexs = (int *)malloc(sizeof(int) * size);
+    g->size = size;
+    g->adj = (int **)malloc(sizeof(int *) * size);
+    return g;
+}
+
+graph *input(graph g)
+{
+}
+
+void menu()
+{
+    int size;
+    printf("Enter the graph size: ");
+    scanf("%d", &size);
+
+    graph *g = create_graph(size);
+}
+
 int main()
 {
+
+    menu();
+    return 0;
 
     char vertexs[SIZE] = {'A', 'B', 'C', 'D', 'E'};
 

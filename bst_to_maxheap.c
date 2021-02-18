@@ -69,11 +69,7 @@ void postorder(node **root, void (*fun)(node *ptr))
     fun(*root);
 }
 
-void countNodeUtil(node *)
 
-    int countNodes(node **root)
-{
-}
 
 void toHeap(node **tree)
 {
