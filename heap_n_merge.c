@@ -1,5 +1,12 @@
 #include <stdio.h>
 
+void display(int *arr, int size)
+{
+    for (int i = 0; i < size; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
+}
+
 void swap(int *a, int *b)
 {
     int temp = *a;
@@ -33,11 +40,12 @@ void heapSort(int *arr, int size)
     for (int i = size / 2 - 1; i >= 0; i--)
         heapify(arr, size, i);
 
+    // display(arr, size);
+    // return;
+
     for (int i = size - 1; i > 0; i--)
     {
-
         swap(&arr[0], &arr[i]);
-
         heapify(arr, i, 0);
     }
 }
@@ -96,13 +104,6 @@ void mergeSort(int *arr, int left, int right)
         mergeSort(arr, mid + 1, right);
         merge(arr, left, mid, right);
     }
-}
-
-void display(int *arr, int size)
-{
-    for (int i = 0; i < size; i++)
-        printf("%d ", arr[i]);
-    printf("\n");
 }
 
 int main()

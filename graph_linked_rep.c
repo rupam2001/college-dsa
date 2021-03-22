@@ -82,11 +82,32 @@ void display(node *adj, int num)
     }
 }
 
+void BFS(node *adj, int num)
+{
+    node *key[num];
+
+    for (int i = 0; i < num; i++)
+    {
+
+        node *ptr = &adj[i];
+
+        while (ptr)
+        {
+            printf("(%d) ", ptr->vertext);
+            ptr = ptr->next;
+        }
+        printf("\n");
+    }
+}
+
 int main()
 {
-    node *graph = create_graph(5);
-    graph = input(graph, 5);
-    display(graph, 5);
+    int size = 2;
+    node *graph = create_graph(size);
+    graph = input(graph, size);
+    display(graph, size);
+
+    BFS(graph, size);
 
     return 0;
 }

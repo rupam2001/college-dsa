@@ -109,29 +109,34 @@ node *delete (node *root, int data)
 
     if (root == NULL)
         return root;
-
+    //these are just searching for the data to be deleted
     if (data < root->data)
         root->left = delete (root->left, data);
 
     else if (data > root->data)
         root->right = delete (root->right, data);
+    //this is where actual deletion is happening
     else
     {
         // node with only one child or no child
         if (root->left == NULL)
         {
+            //if the left is NULL that means tis only one child which is right..
+            // we return the right child and it will be added in the above searching  where we assign it by calling the delete recursively
             struct node *temp = root->right;
             free(root);
             return temp;
         }
         else if (root->right == NULL)
         {
+            //means it has one child and it is the left  (read the above comment)
             struct node *temp = root->left;
             free(root);
             return temp;
         }
 
         // node with two children: Get the inorder successor
+        // inorder successor:   go right then go left only as much as you can 
 
         struct node *temp = root;
         temp = temp->right;

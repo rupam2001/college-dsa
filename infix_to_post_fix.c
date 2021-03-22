@@ -82,8 +82,9 @@ void toPostfix(char *infix, int size, int verbose)
 int main()
 {
     // char* infix = "a+b*c+(d*e+f)*g";
-    char *infix = " ( ( H * ( ( ( ( A + ( ( B + C ) * D ) ) * F ) * G ) * E ) ) + J )\0";
-    char *infix2 = "a+b*c+(d*e+f)*g";
-    toPostfix(infix2, 70, true);
+    // char *infix = " ( ( H * ( ( ( ( A + ( ( B + C ) * D ) ) * F ) * G ) * E ) ) + J )\0";
+    char *infix = "A+B*C+D\0";
+    // char *infix2 = "a+b*c+(d*e+f)*g";
+    toPostfix(infix, 8, true);
     return 0;
 }
